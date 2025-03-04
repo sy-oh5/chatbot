@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 챗봇</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #chat-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #aaa;
+        }
+        #chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fafafa;
+        }
+        #userInput {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>AI 챗봇</h1>
+<div id="chat-container">
+    <div id="chat-box"></div>
+    <input type="text" id="userInput" placeholder="메시지를 입력하세요..." onkeypress="handleKeyPress(event)">
+    <button onclick="sendMessage()">전송</button>
+</div>
+
+<script>
+    function sendMessage() {
+        let userInput = document.getElementById("userInput").value;
+        if (!userInput.trim()) return;
+
+        let chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += `<p><strong>나:</strong> ${userInput}</p>`;
+
+        fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: userInput
+        })
+            .then(response => response.text())  // 응답을 문자열 그대로 받기
+            .then(data => {
+                chatBox.innerHTML += `<p><strong>챗봇:</strong> ${data}</p>`; // 문자열 그대로 출력
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error("Error:", error));
+
+        document.getElementById("userInput").value = "";
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+</script>
+</body>
+</html>
