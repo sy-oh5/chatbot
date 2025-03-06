@@ -1,5 +1,7 @@
-package com.example.chatbot;
+package com.example.chatbot.api;
 
+import com.example.chatbot.rest.dto.ChatRequestDto;
+import com.example.chatbot.rest.dto.ChatResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

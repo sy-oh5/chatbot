@@ -1,4 +1,4 @@
-package com.example.chatbot;
+package com.example.chatbot.rest.dto;
 
 import lombok.Data;
 import java.util.List;

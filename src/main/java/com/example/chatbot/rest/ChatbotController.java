@@ -1,5 +1,6 @@
-package com.example.chatbot;
+package com.example.chatbot.rest;
 
+import com.example.chatbot.api.ApiService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

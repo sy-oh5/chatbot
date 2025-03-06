@@ -1,5 +1,8 @@
-package com.example.chatbot;
+package com.example.chatbot.api;
 
+import com.example.chatbot.rest.dto.ChatRequestDto;
+import com.example.chatbot.rest.dto.ChatResponseDto;
+import com.example.chatbot.UserType;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ApiService {
     private final String SESSION_NAME = "chatHistory";
-    private final com.example.chatbot.ApiClient ApiClient;
+    private final com.example.chatbot.api.ApiClient ApiClient;
 
     private List<ChatRequestDto.MessageDto> setMessageToSession(HttpSession session, UserType userType, String message){
         List<ChatRequestDto.MessageDto> chatHistory = (List<ChatRequestDto.MessageDto>) session.getAttribute(SESSION_NAME);

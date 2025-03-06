@@ -1,4 +1,4 @@
-package com.example.chatbot;
+package com.example.chatbot.api;
 
 import feign.RequestInterceptor;
 import lombok.RequiredArgsConstructor;

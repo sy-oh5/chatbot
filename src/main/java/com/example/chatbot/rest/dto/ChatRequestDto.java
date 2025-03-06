@@ -1,5 +1,6 @@
-package com.example.chatbot;
+package com.example.chatbot.rest.dto;
 
+import com.example.chatbot.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
